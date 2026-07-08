@@ -4,11 +4,21 @@ A basic-level end-to-end sales forecasting project built for the CodTech interns
 The pipeline goes from raw daily sales data → exploratory analysis → model training →
 evaluation → an interactive Streamlit dashboard.
 
+# 📈 Time-Series Sales Forecasting
+
+**Intern Name:** Niharika Agrawal
+**Intern ID:** CITS2481
+**Domain:** Data Science
+**Duration:** 30 May 2026 - 11 July 2026
+**Organization:** CodTech IT Solutions
+
 ## Problem Statement
+
 Forecast future daily sales for a retail store/item using historical sales data,
 and visualize the forecast in an interactive dashboard.
 
 ## Dataset
+
 Synthetic daily sales data (2021–2023) generated with `generate_data.py`, designed to
 mimic a real retail time series: upward trend, yearly seasonality, weekly seasonality
 (weekend boost), and holiday spikes — plus random noise.
@@ -18,6 +28,7 @@ mimic a real retail time series: upward trend, yearly seasonality, weekly season
 > `date, sales` CSV (e.g. Kaggle's "Store Item Demand Forecasting" dataset).
 
 ## Approach
+
 1. **EDA** — plotted sales trend over time and average sales by day of week
 2. **Train/test split** — last 30 days held out as the test set (no random shuffling, since order matters in time series)
 3. **Baseline model** — seasonal naive forecast (repeats value from 7 days prior)
@@ -26,15 +37,16 @@ mimic a real retail time series: upward trend, yearly seasonality, weekly season
 
 ## Results
 
-| Model                     | MAE   | RMSE  | MAPE (%) |
-|---------------------------|-------|-------|----------|
-| Seasonal Naive (baseline) | 42.5  | 60.2  | 12.4     |
-| Prophet                   | 26.7  | 35.9  | 7.9      |
+| Model                     | MAE  | RMSE | MAPE (%) |
+| ------------------------- | ---- | ---- | -------- |
+| Seasonal Naive (baseline) | 42.5 | 60.2 | 12.4     |
+| Prophet                   | 26.7 | 35.9 | 7.9      |
 
 Prophet outperforms the naive baseline by a solid margin, mainly because it captures
 the yearly and weekly seasonal patterns that the naive method partially misses.
 
 ## Project Structure
+
 ```
 sales-forecasting/
 ├── data/
@@ -68,6 +80,7 @@ streamlit run app.py
 ```
 
 ## Tech Stack
+
 - **Python** (pandas, numpy)
 - **Prophet** — time series forecasting
 - **scikit-learn** — evaluation metrics
@@ -75,6 +88,7 @@ streamlit run app.py
 - **Matplotlib** — static plots
 
 ## Future Improvements
+
 - Extend to multiple stores/items (multi-series forecasting)
 - Add XGBoost with lag features as a second model for comparison
 - Deploy via Docker + a cloud host (Render/Railway)
